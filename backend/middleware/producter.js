@@ -3,9 +3,11 @@ import User from '../model/user.model.js'; // (if using mongo db storage)
 
 const producter = async (req, res, next) => {
     try {
+        console.log('Cookies received:', req.cookies);
+        console.log('Headers:', req.headers);
         const token = req.cookies.sign;
-        console.log(req.cookies)
         if(!token) {
+            console.log('No sign cookie found. Available cookies:', Object.keys(req.cookies));
             return res.status(400).json({error: "No token found"})
         }
 

@@ -5,7 +5,7 @@ const generateToken = (userId, res) => {
     res.cookie('sign', token, {
         maxAge: 15*24*60*1000,
         httpOnly: true,
-        sameSite: 'strict',
+        sameSite: 'lax',
         secure: process.env.NODE_ENV !== 'development'
     })
 }

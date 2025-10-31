@@ -1,8 +1,8 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import authRoute from './router/auth.route.js'
 import userRoute from './router/user.route.js'
 import notesRoute from './router/notes.route.js'
-import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 import connectDB from './db/connectDB.js'; // connect mongoDB
@@ -19,7 +19,7 @@ app.use(cors({
 
 console.log(FRONTEND)
 
-app.use(cookieParser())
+console.log(app.use(cookieParser()))
 
 app.use(express.json());
 

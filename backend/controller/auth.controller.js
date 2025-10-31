@@ -39,8 +39,6 @@ export const signUp = async (req, res) => {
 
         if (newUser) {
             await newUser.save();
-
-            res.cookie('sign', '', {maxAge: 0})
             generateToken(newUser._id, res);
             return res.status(201).json({message: "User created successfully"});
         }
@@ -70,7 +68,6 @@ export const logIn = async (req, res) => {
             return res.status(400).json({error: "Invalid username or password"})
         }
 
-        res.cookie('sign', '', {maxAge: 0})
         generateToken(user._id, res);
         return res.status(201).json({message: "User logged in successfully"});
     } catch (error) {

@@ -12,14 +12,16 @@ const app = express();
 
 const FRONTEND = process.env.NODE_ENV !== 'production' ? process.env.LOCAL_NEXT : process.env.VERCEL_NEXT;
 
+app.use(cookieParser()); // Move cookie-parser before CORS
+
 app.use(cors({
     origin: [FRONTEND],
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
 }));
 
-console.log(FRONTEND)
-
-console.log(app.use(cookieParser()))
+console.log('Frontend URL:', FRONTEND);
 
 app.use(express.json());
 
